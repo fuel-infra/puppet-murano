@@ -25,6 +25,7 @@ describe 'murano' do
 
     it { is_expected.to contain_murano_config('DEFAULT/verbose').with_value(false) }
     it { is_expected.to contain_murano_config('DEFAULT/debug').with_value(false) }
+    it { is_expected.to contain_murano_config('DEFAULT/use_stderr').with_value(false) }
     it { is_expected.to contain_murano_config('DEFAULT/log_dir').with_value('/var/log/murano') }
     it { is_expected.to contain_murano_config('DEFAULT/notification_driver').with_value('messagingv2') }
 
@@ -71,6 +72,7 @@ describe 'murano' do
       :package_ensure          => 'latest',
       :verbose                 => true,
       :debug                   => true,
+      :use_stderr              => true,
       :use_syslog              => true,
       :log_facility            => 'LOG_USER',
       :log_dir                 => '/var/log/murano_logs',
@@ -130,6 +132,7 @@ describe 'murano' do
 
     it { is_expected.to contain_murano_config('DEFAULT/verbose').with_value(true) }
     it { is_expected.to contain_murano_config('DEFAULT/debug').with_value(true) }
+    it { is_expected.to contain_murano_config('DEFAULT/use_stderr').with_value(true) }
     it { is_expected.to contain_murano_config('DEFAULT/log_dir').with_value('/var/log/murano_logs') }
     it { is_expected.to contain_murano_config('DEFAULT/notification_driver').with_value('messagingv1') }
 
