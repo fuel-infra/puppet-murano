@@ -9,9 +9,9 @@ describe 'murano::api' do
   context 'on a RedHat osfamily' do
     let :facts do
       {
-          :osfamily                 => 'RedHat',
-          :operatingsystemrelease   => '7.0',
-          :concat_basedir           => '/var/lib/puppet/concat'
+          :osfamily               => 'RedHat',
+          :operatingsystemrelease => '7.0',
+          :concat_basedir         => '/var/lib/puppet/concat'
       }
     end
 

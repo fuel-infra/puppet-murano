@@ -58,7 +58,7 @@
 #
 # [*rabbit_ha_queues*]
 #  (Optional) Should murano api use ha queues
-#  Defaults to 'guest'
+#  Defaults to false
 #
 # [*rabbit_own_host*]
 #  (Optional) Host for murano rabbit server
@@ -90,7 +90,7 @@
 #
 # [*use_ssl*]
 #   (optional) Enable SSL on the API server
-#   Defaults to false, not set
+#   Defaults to false
 #
 # [*cert_file*]
 #   (optinal) Certificate file to use when starting API server securely
@@ -109,8 +109,7 @@
 #  Defaults to false
 #
 # [*external_network*]
-#  (Optional) Name of the external Neutron network
-#  which will be use by Murano
+#  (Optional) Name of the external Neutron network which will be used
 #  Defaults to undef
 #
 # [*default_router*]

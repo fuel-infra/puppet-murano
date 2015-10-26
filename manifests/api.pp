@@ -41,7 +41,6 @@ class murano::api(
   include ::murano::policy
 
   Murano_config<||> ~> Service['murano-api']
-  Package<| title == 'murano-common' |> -> Package['murano-api']
   Exec['murano-dbmanage'] -> Service['murano-api']
   Class['murano::policy'] -> Service['murano-api']
 
@@ -54,8 +53,8 @@ class murano::api(
   }
 
   murano_config {
-    'DEFAULT/bind_host' : value => $host;
-    'DEFAULT/bind_port' : value => $port;
+    'DEFAULT/bind_host': value => $host;
+    'DEFAULT/bind_port': value => $port;
   }
 
   package { 'murano-api':

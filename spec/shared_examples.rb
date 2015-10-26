@@ -14,9 +14,9 @@ shared_examples 'generic murano service' do |service|
         :notify => ["Service[#{service[:name]}]"]
       })
       is_expected.to contain_service(service[:name]).with({
-        :name      => service[:service_name],
-        :ensure    => 'running',
-        :enable    => true
+        :name   => service[:service_name],
+        :ensure => 'running',
+        :enable => true
       })
     end
   end
@@ -34,9 +34,9 @@ shared_examples 'generic murano service' do |service|
         :notify => ["Service[#{service[:name]}]"]
       })
       is_expected.to contain_service(service[:name]).with({
-        :name      => service[:service_name],
-        :ensure    => 'running',
-        :enable    => true
+        :name   => service[:service_name],
+        :ensure => 'running',
+        :enable => true
       })
     end
   end

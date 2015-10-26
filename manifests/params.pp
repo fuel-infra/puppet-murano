@@ -14,7 +14,6 @@ class murano::params {
       $engine_package_name       = 'openstack-murano-engine'
       $pythonclient_package_name = 'openstack-python-muranoclient'
       $dashboard_package_name    = 'openstack-murano-dashboard'
-      $psycopg_package_name      = 'python-psycopg2'
       # service names
       $api_service_name          = 'murano-api'
       $engine_service_name       = 'murano-engine'
@@ -27,8 +26,7 @@ class murano::params {
       $common_package_name       = 'murano-common'
       $engine_package_name       = 'murano-engine'
       $pythonclient_package_name = 'python-muranoclient'
-      $dashboard_package_name    = 'murano-dashboard'
-      $psycopg_package_name      = 'python-psycopg2'
+      $dashboard_package_name    = 'python-murano-dashboard'
       # service names
       $api_service_name          = 'murano-api'
       $engine_service_name       = 'murano-engine'
