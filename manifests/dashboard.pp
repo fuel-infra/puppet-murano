@@ -60,18 +60,19 @@ class murano::dashboard(
   concat::fragment { 'original_config':
     target => $::murano::params::local_settings_path,
     source => $::murano::params::local_settings_path,
-    order  => 1;
+    order  => 1,
   }
 
   concat::fragment { 'murano_dashboard_section':
     target  => $::murano::params::local_settings_path,
     content => template('murano/local_settings.py.erb'),
-    order   => 2;
+    order   => 2,
   }
 
   exec { 'clean_horizon_config':
     command => "sed -e '/^## MURANO_CONFIG_BEGIN/,/^## MURANO_CONFIG_END ##/ d' -i ${::murano::params::local_settings_path}",
-    onlyif  => "grep '^## MURANO_CONFIG_BEGIN' ${::murano::params::local_settings_path}";
+    onlyif  => "grep '^## MURANO_CONFIG_BEGIN' ${::murano::params::local_settings_path}",
+    path    => [ '/bin/', '/sbin/', '/usr/bin/', '/usr/sbin/' ],
   }
 
   exec { 'django_collectstatic':
