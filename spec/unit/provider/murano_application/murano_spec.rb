@@ -42,7 +42,7 @@ describe provider_class do
 
     describe '#create' do
       it 'should create application' do
-        provider.expects(:auth_murano).with("package-import", ['/tmp/io.murano.zip', '--is-public', '--exists-action u'] )
+        provider.expects(:auth_murano).with("package-import", ['/tmp/io.murano.zip', '--is-public', '--exists-action', 'u'] )
                       .returns('')
         provider.create
       end

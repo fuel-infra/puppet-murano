@@ -30,7 +30,7 @@ Puppet::Type.type(:murano_application).provide(
       opts.push('-c').push(resource[:category])
     end
 
-    opts.push('--is-public').push('--exists-action u')
+    opts.push('--is-public').push('--exists-action').push('u')
 
     auth_murano('package-import', opts)
   end

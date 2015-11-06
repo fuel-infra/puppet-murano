@@ -37,8 +37,7 @@ class Puppet::Provider::Murano < Puppet::Provider
 
   def self.get_murano_credentials
     #needed keys for authentication
-    auth_keys = ['auth_host', 'auth_port', 'auth_protocol',
-                 'admin_tenant_name', 'admin_user', 'admin_password']
+    auth_keys = ['auth_uri', 'admin_tenant_name', 'admin_user', 'admin_password']
     conf = murano_conf
     if conf and conf['keystone_authtoken'] and
         auth_keys.all?{|k| !conf['keystone_authtoken'][k].nil?}
@@ -50,19 +49,10 @@ class Puppet::Provider::Murano < Puppet::Provider
     end
   end
 
-  def self.get_auth_endpoint
-    m = murano_credentials
-    "#{m['auth_protocol']}://#{m['auth_host']}:#{m['auth_port']}/v2.0/"
-  end
-
-  def self.auth_endpoint
-    @auth_endpoint ||= get_auth_endpoint
-  end
-
   def self.auth_murano(*args)
     m = murano_credentials
     authenv = {
-        :OS_AUTH_URL      => self.auth_endpoint,
+        :OS_AUTH_URL      => m['auth_uri'],
         :OS_USERNAME      => m['admin_user'],
         :OS_TENANT_NAME   => m['admin_tenant_name'],
         :OS_PASSWORD      => m['admin_password'],
