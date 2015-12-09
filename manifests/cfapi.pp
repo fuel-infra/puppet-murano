@@ -65,6 +65,7 @@ class murano::cfapi(
   package { 'murano-cfapi':
     ensure => $package_ensure,
     name   => $::murano::params::cfapi_package_name,
+    tag    => ['openstack', 'murano-package'],
   }
 
   service { 'murano-cfapi':
@@ -72,6 +73,7 @@ class murano::cfapi(
     name    => $::murano::params::cfapi_service_name,
     enable  => $enabled,
     require => Package['murano-cfapi'],
+    tag     => 'murano-service',
   }
 
   Package['murano-cfapi'] ~> Service['murano-cfapi']
