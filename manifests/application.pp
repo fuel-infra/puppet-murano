@@ -4,6 +4,10 @@
 #
 # === Parameters
 #
+# [*package_ensure*]
+#  (Optional) Ensure state for package
+#  Defaults to 'present'
+#
 # [*package_name*]
 #  (Optional) Application package name
 #  Defaults to $title
@@ -13,6 +17,7 @@
 #  Defaults to 'undef'
 #
 define murano::application (
+  $package_ensure   = 'present',
   $package_name     = $title,
   $package_category = undef,
 ) {
@@ -20,7 +25,7 @@ define murano::application (
   $package_path="/var/cache/murano/meta/${package_name}.zip"
 
   murano_application { $package_name:
-    ensure       => 'present',
+    ensure       => $package_ensure,
     package_path => $package_path,
     category     => $package_category,
   }

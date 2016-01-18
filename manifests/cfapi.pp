@@ -21,11 +21,11 @@
 #
 # [*bind_host*]
 #  (Optional) Host on which murano cloudfoundry api should listen
-#  Defaults to '127.0.0.1'.
+#  Defaults to $::os_service_default.
 #
 # [*bind_port*]
 #  (Optional) Port on which murano cloudfoundry api should listen
-#  Defaults to '8083'.
+#  Defaults to $::os_service_default.
 #
 # [*auth_url*]
 #  (Optional) Public identity endpoint
@@ -36,8 +36,8 @@ class murano::cfapi(
   $manage_service = true,
   $enabled        = true,
   $package_ensure = 'present',
-  $bind_host      = '127.0.0.1',
-  $bind_port      = '8083',
+  $bind_host      = $::os_service_default,
+  $bind_port      = $::os_service_default,
   $auth_url       = 'http://127.0.0.1:5000/v2.0/',
 ) {
 

@@ -1,6 +1,8 @@
 murano
 ======
 
+7.0.0 - 2015.2.0 - Liberty
+
 #### Table of Contents
 
 1. [Overview - What is the murano module?](#overview)
@@ -29,6 +31,10 @@ Setup
 **What the murano module affects:**
 
 * [Murano](https://wiki.openstack.org/wiki/Murano), the application catalog service for OpenStack.
+
+### Installing murano
+
+    puppet module install openstack/murano
 
 ### Beginning with murano
 

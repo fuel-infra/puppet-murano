@@ -4,7 +4,6 @@ describe 'murano::dashboard' do
 
   let :facts do {
     :osfamily       => 'Debian',
-    :concat_basedir => '/var/lib/puppet/concat'
   } end
 
   shared_examples_for 'with default class parameters' do
@@ -103,6 +102,16 @@ describe 'murano::dashboard' do
     })}
   end
 
-  it_configures 'with default class parameters'
-  it_configures 'with parameters override'
+  context 'on Debian platforms' do
+    let :facts do
+      {
+        :osfamily => 'Debian',
+        :operatingsystem => 'Debian',
+        :concat_basedir => '/var/lib/puppet/concat'
+      }
+    end
+
+    it_configures 'with default class parameters'
+    it_configures 'with parameters override'
+  end
 end

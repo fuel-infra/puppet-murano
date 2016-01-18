@@ -23,7 +23,7 @@
 #
 # [*metadata_dir*]
 #  (Optional) Directory to store murano dashboard metadata cache
-#  Defaults to '/var/cache/muranodashboard-cache'
+#  Defaults to '/var/cache/murano-dashboard'
 #
 # [*max_file_size*]
 #  (Optional) Maximum allowed filesize to upload
@@ -63,7 +63,7 @@ class murano::dashboard(
   package { 'murano-dashboard':
     ensure => $package_ensure,
     name   => $::murano::params::dashboard_package_name,
-    tag    => 'openstack',
+    tag    => ['openstack', 'murano-packages'],
   }
 
   concat { $::murano::params::local_settings_path: }

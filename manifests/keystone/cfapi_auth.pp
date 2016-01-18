@@ -21,7 +21,7 @@
 #
 # [*tenant*]
 #   (Optional) Tenant for murano user.
-#   Defaults to 'service'.
+#   Defaults to 'services'.
 #
 # [*configure_endpoint*]
 #   (Optional) Should murano endpoint be configured?
@@ -65,7 +65,7 @@ class murano::keystone::cfapi_auth(
   $service_name        = undef,
   $auth_name           = 'murano-cfapi',
   $email               = 'murano@localhost',
-  $tenant              = 'service',
+  $tenant              = 'services',
   $service_type        = 'service_broker',
   $service_description = 'Murano Service Broker API',
   $configure_endpoint  = true,

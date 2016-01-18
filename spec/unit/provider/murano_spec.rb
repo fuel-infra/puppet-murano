@@ -48,7 +48,7 @@ describe Puppet::Provider::Murano do
       conf = {'keystone_authtoken' => {'invalid_value' => 'foo'}}
       klass.expects(:murano_conf).returns(conf)
       expect do
-       klass.murano_credentials
+        klass.murano_credentials
       end.to raise_error(Puppet::Error, credential_error)
     end
 

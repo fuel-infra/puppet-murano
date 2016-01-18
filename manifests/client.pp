@@ -17,7 +17,7 @@ class murano::client(
   package { 'python-muranoclient':
     ensure => $package_ensure,
     name   => $::murano::params::pythonclient_package_name,
-    tag    => 'openstack',
+    tag    => ['openstack', 'murano-packages'],
   }
 
 }

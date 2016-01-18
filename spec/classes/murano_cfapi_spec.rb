@@ -16,8 +16,8 @@ describe 'murano::cfapi' do
     it { is_expected.to contain_class('murano::policy') }
 
     it { is_expected.to contain_murano_config('cfapi/tenant').with_value('admin') }
-    it { is_expected.to contain_murano_config('cfapi/bind_host').with_value('127.0.0.1') }
-    it { is_expected.to contain_murano_config('cfapi/bind_port').with_value('8083') }
+    it { is_expected.to contain_murano_config('cfapi/bind_host').with_value('<SERVICE DEFAULT>') }
+    it { is_expected.to contain_murano_config('cfapi/bind_port').with_value('<SERVICE DEFAULT>') }
     it { is_expected.to contain_murano_config('cfapi/auth_url').with_value('http://127.0.0.1:5000/v2.0/') }
   end
 
@@ -41,42 +41,48 @@ describe 'murano::cfapi' do
 
   context 'on a RedHat osfamily' do
     let :facts do
-      {
+      @default_facts.merge({
           :osfamily               => 'RedHat',
           :operatingsystemrelease => '7.0',
           :concat_basedir         => '/var/lib/puppet/concat'
-      }
+      })
     end
 
     it_configures 'murano-cfapi'
     it_configures 'with default parameters'
     it_configures 'with parameters override'
 
-    it_behaves_like 'generic murano-cfapi service', {
+    it_behaves_like 'generic murano service', {
         :name         => 'murano-cfapi',
         :package_name => 'openstack-murano-cfapi',
-        :service_name => 'murano-cfapi'
+        :service_name => 'murano-cfapi',
+        :extra_params => {
+          :tenant => 'admin',
+        },
       }
   end
 
   context 'on a Debian osfamily' do
     let :facts do
-      {
+      @default_facts.merge({
           :operatingsystemrelease => '7.8',
           :operatingsystem        => 'Debian',
           :osfamily               => 'Debian',
           :concat_basedir         => '/var/lib/puppet/concat'
-      }
+      })
     end
 
     it_configures 'murano-cfapi'
     it_configures 'with default parameters'
     it_configures 'with parameters override'
 
-    it_behaves_like 'generic murano-cfapi service', {
+    it_behaves_like 'generic murano service', {
         :name         => 'murano-cfapi',
         :package_name => 'murano-cfapi',
-        :service_name => 'murano-cfapi'
+        :service_name => 'murano-cfapi',
+        :extra_params => {
+          :tenant => 'admin',
+        },
       }
   end
 end
